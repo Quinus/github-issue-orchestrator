@@ -1,0 +1,3 @@
+interface:
+  display_name: "GitHub Issue Orchestrator"
+  short_description: "Schedule GitHub issues across Codex workers without dependency races"
