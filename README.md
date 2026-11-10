@@ -63,13 +63,14 @@ This copies the skill (its `SKILL.md`, reference docs, and agent config) into yo
 ## Repository layout
 
 ```
-SKILL.md                          # skill entrypoint: orchestration protocol & invariants
-agents/openai.yaml                # subagent configuration
-references/
-  worker-contract.md              # what a worker receives and must obey
-  github-state.md                 # discovering/mapping issue & project status
-  branch-and-pr-topology.md       # branching, stacking, and PR rules
-  recovery.md                     # resuming interrupted or pre-existing runs
+skills/github-issue-orchestrator/
+  SKILL.md                        # skill entrypoint: orchestration protocol & invariants
+  agents/openai.yaml              # subagent configuration
+  references/
+    worker-contract.md            # what a worker receives and must obey
+    github-state.md               # discovering/mapping issue & project status
+    branch-and-pr-topology.md     # branching, stacking, and PR rules
+    recovery.md                   # resuming interrupted or pre-existing runs
 ```
 
 ## License
