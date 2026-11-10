@@ -8,14 +8,14 @@ Instead of having one agent grind through a list of issues sequentially (or wors
 
 - **You** give it a set of issues (e.g. `#18`–`#21`).
 - **The orchestrator** (your Codex session) reads every issue, inspects existing branches/PRs, builds a dependency graph, and classifies each issue as `ready`, `waiting`, `blocked`, `already-in-progress`, or `complete`.
-- **Workers** (Codex subagents) each get *exactly one* issue, an isolated branch, and the context they need. They never pick up extra tickets or spawn their own subagents.
+- **Workers** (Codex subagents) each get _exactly one_ issue, an isolated branch, and the context they need. They never pick up extra tickets or spawn their own subagents.
 - **GitHub is the state store.** Issue/project statuses (`In Progress` → `In Review` → `Done`), comments, branches, and PRs are the workflow's memory — so any interrupted run can be resumed from a brand-new Codex session.
 
 Key guarantees enforced by the skill:
 
 - Dependencies are derived from actual issue content and branch topology, never from issue numbers.
 - No worker is ever spawned to "wait" on another worker.
-- Status is set to `In Progress` *before* a worker launches; a worker's `DONE` claim is independently verified before a PR is created.
+- Status is set to `In Progress` _before_ a worker launches; a worker's `DONE` claim is independently verified before a PR is created.
 - Three PR modes: `dependency-stack` (default), `linear-stack` (compound every PR into the next), and `independent`.
 - Correctness over concurrency — work is parallelized only when genuinely independent.
 
